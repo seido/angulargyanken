@@ -52,17 +52,17 @@ font-size: 18pt;
 }
 
 .handIconG {
-	background-image: url("/images/iconG.png");
+	background-image: url("../images/iconG.png");
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 .handIconC {
-	background-image: url("/images/iconC.png");
+	background-image: url("../images/iconC.png");
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 .handIconP {
-	background-image: url("/images/iconP.png");
+	background-image: url("../images/iconP.png");
 	background-repeat: no-repeat;
 	background-position: center center;
 }
