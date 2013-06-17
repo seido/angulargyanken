@@ -1,0 +1,27 @@
+<div class="viewmain">
+	<div class="vsblock">
+		<div class="my">
+			<div ng-class="{'icon':true, 'handIconG':(myHand=='G'), 'handIconP':myHand=='P', 'handIconC':myHand=='C'}">
+				<div class="selectIcons" ng-show="myHand==null">
+					<button><img src="images/iconG.png" alt="" ng-click="setMyHand('G')"></button>
+					<button><img src="images/iconC.png" alt="" ng-click="setMyHand('C')"></button>
+					<button><img src="images/iconP.png" alt="" ng-click="setMyHand('P')"></button>
+				</div>
+			</div>
+			<div class="name">自分</div>
+		</div>
+		<div class="vs">
+			<span ng-show="enemyHand==null && myHand==null">VS</span>
+			<span ng-show="enemyHand==null && myHand!=null">じゃんけん</span>
+			<span ng-show="enemyHand!=null && result==null">ぽん</span>
+			<span ng-show="result=='Win'">勝ち</span>
+			<span ng-show="result=='Lose'">負け</span>
+			<span ng-show="result=='Even'">あいこ</span>
+		</div>
+		<div class="enemy">
+			<div ng-class="{'icon':true, 'handIconG':(enemyHand=='G'), 'handIconP':(enemyHand=='P'), 'handIconC':(enemyHand=='C')}"></div>
+			<div class="name">コンピュータ</div>
+		</div>
+	</div>
+  <button ng-show="result!=null" ng-click="reset()">再戦</button>
+</div>
