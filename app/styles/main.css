@@ -1,0 +1,68 @@
+/* Will be compiled down to a single stylesheet with your sass files */
+
+body {
+	background-color: #F2F2F2; 
+}
+
+.viewmain {
+	margin: 20px 0;
+}
+
+.vsblock > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.vsblock .icon {
+	width: 180px;
+	height:180px;
+}
+
+.vsblock .vs {
+	font-size: 42pt;
+	line-height: 52px;
+}
+
+.vsblock .name {
+text-align:center;
+color:white;
+margin-top: 0.5em;
+font-size: 18pt;
+}
+
+.vs {
+	width: 180px;
+	text-align: center;
+}
+
+.my {
+	background-color : #77C6D8;
+	padding: 1em;
+}
+
+.enemy {
+	background-color : #BF1E3C;
+	padding: 1em;
+}
+
+.selectIcons > button {
+	width:78px;
+	height:78px;
+	margin:5px;
+}
+
+.handIconG {
+	background-image: url("/images/iconG.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.handIconC {
+	background-image: url("/images/iconC.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.handIconP {
+	background-image: url("/images/iconP.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
