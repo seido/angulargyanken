@@ -1,18 +1,19 @@
 'use strict';
 
 angular.module('angulargyanknApp')
-  .controller('MainCtrl', ['$scope', 'gyanken', '$timeout', 'coin', 'api', 
-		  function ($scope, gyanken, $timeout, coin, api) {
+  .controller('MainCtrl', ['$scope', 'gyanken', '$timeout', 'api',
+		  function ($scope, gyanken, $timeout, api) {
 	  // 初期化
 	  $scope.myHand=null;
 
 	  $scope.$watch(function(){
 		  var userInfo = api.getUserInfo();
-		  if(userInfo==null)
-		  	return null;
+		  if(!userInfo) {
+			  return null;
+		  }
 		  return userInfo.coin;
 	  },function(v){
-		  if($scope.myCoin==null) {
+		  if(!$scope.myCoin) {
 			  $scope.myCoin = v;
 		  }
 	  });
@@ -23,15 +24,20 @@ angular.module('angulargyanknApp')
 	  $scope.main.bet = 1;
 	  //自分の手決定時処理
 	  $scope.gyanken= function() {
-		  fightResult = null
+		  fightResult = null;
 		  api.fight($scope.myHand, $scope.main.bet, function(resp){
 			  fightResult=resp;
-		  });;
+		  });
 		  $timeout(pon, 1500);
 	  };
 	  $scope.setMyHand = function(hand) {
+		  console.log('setMyHand:'+hand);
 		  $scope.myHand=hand;
 		  $scope.gyanken();
+	  };
+	  $scope.logcount = 0;
+	  $scope.log = function() {
+		  console.log('log'+$scope.logcount);
 	  };
 
 	  //ぽん
@@ -45,7 +51,7 @@ angular.module('angulargyanknApp')
 
 		  // 時間差で結果表示
 		  $timeout(function(){
-			  var result=gyanken.fight();
+			  gyanken.fight();
 			  $scope.result=fightResult.result;
 			  $scope.myCoin=fightResult.coin;
 		  },1200);
@@ -62,10 +68,11 @@ angular.module('angulargyanknApp')
 	  $scope.isLoggedIn = null;
 	  $scope.$watch(function(){
 		  return api.isLoggedIn();
-	  },function(newValue, oldValue){
+	  },function(newValue){
 		  $scope.isLoggedIn = newValue;
 	  });
 
 	  $scope.login = api.login;
+	  $scope.logout = api.logout;
 
   }]);

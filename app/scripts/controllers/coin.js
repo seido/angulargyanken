@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angulargyanknApp')
-  .controller('CoinCtrl', function ($scope, coin) {
+  .controller('CoinCtrl', function () {
 	  //$scope.$watch(function(){
 	  //    return coin.getMyCoin();
 	  //}, function(v) {
