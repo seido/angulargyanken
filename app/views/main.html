@@ -24,4 +24,10 @@
 		</div>
 	</div>
   <button ng-show="result!=null" ng-click="reset()">再戦</button>
+  <div ng-include src="'views/coin.html'" ng-hide="myCoin==0"></div>
+  <div ng-include src="'views/nocoin.html'" ng-show="myCoin==0"></div>
+  <div ng-show="isLoggedIn==false">
+	  <button ng-click="login()">ログイン</button>
+  </div>
+	{{main.bet}}
 </div>
