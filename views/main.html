@@ -3,9 +3,9 @@
 		<div class="my">
 			<div ng-class="{'icon':true, 'handIconG':(myHand=='G'), 'handIconP':myHand=='P', 'handIconC':myHand=='C'}">
 				<div class="selectIcons" ng-show="myHand==null">
-					<button><img src="images/iconG.png" alt="" ng-click="setMyHand('G')"></button>
-					<button><img src="images/iconC.png" alt="" ng-click="setMyHand('C')"></button>
-					<button><img src="images/iconP.png" alt="" ng-click="setMyHand('P')"></button>
+					<button ng-click="setMyHand('G')"><img src="images/iconG.png" alt=""></button>
+					<button ng-click="setMyHand('C')"><img src="images/iconC.png" alt=""></button>
+					<button ng-click="setMyHand('P')"><img src="images/iconP.png" alt=""></button>
 				</div>
 			</div>
 			<div class="name">自分</div>
@@ -24,4 +24,15 @@
 		</div>
 	</div>
   <button ng-show="result!=null" ng-click="reset()">再戦</button>
+  <div ng-show="isLoggedIn==false">
+	  <button ng-click="login()">ログイン</button>
+  </div>
+  <div ng-show="isLoggedIn==true">
+	  <div ng-include="" src="'views/coin.html'" ng-hide="myCoin==0"></div>
+	  <div ng-include="" src="'views/nocoin.html'" ng-show="myCoin==0"></div>
+	  <button ng-click="logout()">ログアウト</button>
+  </div>
+  <div ng-show="isLoggedIn==null">
+	  ロード中...
+  </div>
 </div>

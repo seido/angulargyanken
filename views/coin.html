@@ -1,0 +1,14 @@
+<div>
+	<form name="betform">
+		<p>
+			<label for="bet">ベット:</label>
+			<input id="bet" type="number" name="bet" ng-model="main.bet" min="1" max="{{myCoin}}">
+			/
+			<span>{{myCoin}}</span>
+		</p>
+		<span>{{betform.bet.$error.number}}</span>
+		<span class="error" ng-show="betform.input.$error.number">
+        Not valid number!</span>
+	</form>
+	<button>購入</button>
+</div>
