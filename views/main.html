@@ -30,7 +30,7 @@
   <div ng-show="isLoggedIn==true">
 	  <div ng-include="" src="'views/coin.html'" ng-hide="myCoin==0"></div>
 	  <div ng-include="" src="'views/nocoin.html'" ng-show="myCoin==0"></div>
-	  <button ng-click="logout()">ログアウト</button>
+	  <span>{{nickname}}</span>さん<button ng-click="logout()">ログアウト</button>
   </div>
   <div ng-show="isLoggedIn==null">
 	  ロード中...
