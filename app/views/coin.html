@@ -6,9 +6,8 @@
 			/
 			<span>{{myCoin}}</span>
 		</p>
-		<span>{{betform.bet.$error.number}}</span>
 		<span class="error" ng-show="betform.input.$error.number">
         Not valid number!</span>
 	</form>
-	<button>購入</button>
+	<button ng-click="buyCoin('1000')">購入</button>
 </div>
