@@ -1,5 +1,5 @@
 'use strict';
-/*global gapi:false */
+/*global gapi:false,google:false */
 
 angular.module('angulargyanknApp')
 .factory('api', function ($rootScope) {
@@ -23,11 +23,11 @@ angular.module('angulargyanknApp')
 	var _fetchUserInfo = function(success, failed) {
 		gapi.client.billingtest.user.fetch().execute(function(resp){
 			if(!resp.code) {
-				if(success != null) {
+				if(success) {
 					success(resp);
 				}
 			} else {
-				if(failed != null) {
+				if(failed) {
 					failed(resp);
 				}
 			}
@@ -126,7 +126,7 @@ angular.module('angulargyanknApp')
 						_fetchUserInfo(function(resp){
 							_userInfo = resp;
 							$rootScope.$digest();
-							if(success!=null) {
+							if(success) {
 								$rootScope.$apply(function() {
 									success(resp.coin);
 								});
@@ -134,7 +134,7 @@ angular.module('angulargyanknApp')
 						});
 					},
 					'failure' : function(){
-						console.log("Buy NG");
+						console.log('Buy NG');
 					}
 				});
 			});

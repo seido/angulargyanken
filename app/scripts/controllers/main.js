@@ -17,7 +17,7 @@ angular.module('angulargyanknApp')
 			  $scope.myCoin = v;
 		  }
 	  });
-	  
+
 	  $scope.$watch(function(){
 		  var userInfo = api.getUserInfo();
 		  if(!userInfo) {
@@ -89,5 +89,5 @@ angular.module('angulargyanknApp')
 		  api.buyCoin(itemId, function(coin){
 			  $scope.myCoin=coin;
 		  });
-	  }
+	  };
   }]);
