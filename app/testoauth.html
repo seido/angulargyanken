@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+	</head>
+	<body>
+		<button id="authorize-button" style="visibility: hidden">Authorize</button>
+		<script type="text/javascript">
+			var clientId = '528512890343.apps.googleusercontent.com';
+			var apiKey = 'AIzaSyAjUuIYvtq2uNudxnnDlFvaQBcfw-fWuRQ';
+			var scopes = 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
+
+			function handleClientLoad() {
+				//gapi.client.setApiKey(apiKey);
+				window.setTimeout(checkAuth,1);
+			}
+
+function checkAuth() {
+	console.log('authorise');
+	gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true, response_type:'token id_token'}, handleAuthResult);
+	makeApiCall();
+}
+
+
+function handleAuthResult(authResult) {
+	console.log('authorise result');
+	var authorizeButton = document.getElementById('authorize-button');
+	if (authResult) {
+		authorizeButton.style.visibility = 'hidden';
+		makeApiCall();
+	} else {
+		authorizeButton.style.visibility = '';
+		authorizeButton.onclick = handleAuthClick;
+	}
+}
+
+function handleAuthClick(event) {
+	gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+	return false;
+}
+
+function logResponse(resp) {
+	console.log(resp.code);
+}
+
+function makeApiCall() {
+
+	gapi.client.load('oauth2', 'v2', function() {
+			console.log('user.get');
+			var request = gapi.client.oauth2.userinfo.get();
+
+			request.execute(function(resp){
+				logResponse(resp);
+				var token = gapi.auth.getToken();
+				if(token!=null){
+				token.access_token = token.id_token;
+					gapi.auth.setToken(token);
+				}
+				});
+			});
+
+	//gapi.client.load('plus', 'v1', function() { 
+	//		var request = gapi.client.plus.people.get({ 
+	//			'userId': 'me' 
+	//			});
+
+	//		request.execute(logResponse);
+	//		});
+}
+</script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad">
+</script>
+</body>
+</html>

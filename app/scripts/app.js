@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('angulargyanknApp', [])
-  .config(['$routeProvider', function ($routeProvider) {
+angular.module('angulargyanknApp', ['angularytics'])
+  .config(function ($routeProvider, AngularyticsProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -10,4 +10,7 @@ angular.module('angulargyanknApp', [])
       .otherwise({
         redirectTo: '/'
       });
-  }]);
+	  AngularyticsProvider.setEventHandlers(['Console', 'Google']);
+  }).run(function(Angularytics) {
+	  Angularytics.init();
+  });
